@@ -21,7 +21,7 @@ def save_tasks(tasks):
 def update_task_list():
     task_list.delete(*task_list.get_children())
     for i, task in enumerate(tasks, start=1):
-        task_list.insert("", "end", values=(i, task["name"], task["Description"], task["status"]))
+        task_list.insert("", "end", values=(i, task["name"], task["category"], task["status"]))
 
 def add_task():
     name = name_var.get()
@@ -111,7 +111,7 @@ ttk.Button(input_frame, text="Update Task", command=update_task).grid(row=3, col
 list_frame = ttk.LabelFrame(root, text="Your Tasks", padding=10)
 list_frame.pack(fill="both", expand=True, padx=10, pady=5)
 
-columns = ("#", "Name", "Category", "Status")
+columns = ("#", "Name", "Description", "Status")
 task_list = ttk.Treeview(list_frame, columns=columns, show="headings")
 for col in columns:
     task_list.heading(col, text=col)
@@ -126,4 +126,3 @@ tasks = load_tasks()
 update_task_list()
 
 root.mainloop()
-

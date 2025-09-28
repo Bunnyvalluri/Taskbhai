@@ -21,7 +21,7 @@ def save_tasks(tasks):
 def update_task_list():
     task_list.delete(*task_list.get_children())
     for i, task in enumerate(tasks, start=1):
-        task_list.insert("", "end", values=(i, task["name"], task["category"], task["status"]))
+        task_list.insert("", "end", values=(i, task["name"], task["Description"], task["status"]))
 
 def add_task():
     name = name_var.get()
@@ -126,3 +126,4 @@ tasks = load_tasks()
 update_task_list()
 
 root.mainloop()
+
